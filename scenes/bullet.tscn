@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://2ff02n75hbby"]
+
+[ext_resource type="Texture2D" uid="uid://b0w16ik2xsfts" path="res://assets/sprites/coin.png" id="1_bphe2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eyfo1"]
+radius = 5.0
+
+[sub_resource type="GDScript" id="GDScript_8oxw6"]
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bphe2")
+region_enabled = true
+region_rect = Rect2(96.5991, 0.0592651, 13.7011, 15.6129)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_eyfo1")
+script = SubResource("GDScript_8oxw6")
+
+[connection signal="body_entered" from="." to="CollisionShape2D" method="_on_bullet_body_entered"]
